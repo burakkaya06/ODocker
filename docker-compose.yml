@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+
+  reactapp:
+    build:
+      context: ..
+      dockerfile: Docker/frontend/Dockerfile
+      args:
+        - GIT_TOKEN=${GIT_TOKEN}
+    ports:
+      - "3000:80"
+    restart: on-failure
+
+  main:
+    build:
+      context: ..
+      dockerfile: Docker/main/Dockerfile
+      args:
+        - GIT_TOKEN=${GIT_TOKEN}
+    ports:
+      - "50500:50500"gi
+    environment:
+      - ACCOUNT_SERVICE_API_URL=http://accountservice:50503
+    restart: on-failure
+
+  accountservice:
+    build:
+      context: ..
+      dockerfile: Docker/accountservice/Dockerfile
+      args:
+        - GIT_TOKEN=${GIT_TOKEN}
+    ports:
+      - "50503:50503"
+    environment:
+      - MAIN_SERVICE_API_URL=http://main:50500
+    restart: on-failure
+
+  questionservice:
+    build:
+      context: ..
+      dockerfile: Docker/questionsservice/Dockerfile
+      args:
+        - GIT_TOKEN=${GIT_TOKEN}
+    ports:
+      - "50502:50502"
+    restart: on-failure
+
+  nginx:
+    build:
+      context: ..
+      dockerfile: Docker/znginx/Dockerfile
+    ports:
+      - "80:80"
+    restart: on-failure
+
+  jenkins:
+    build:
+      context: ..
+      dockerfile:  Docker/zjenkins/Dockerfile
+    ports:
+      - "4123:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: on-failure
+
+volumes:
+    jenkins_home:
