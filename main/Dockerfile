@@ -32,7 +32,7 @@ RUN sed -i 's|account-service.uri=https://saglikdosyam-account.up.railway.app/ap
 RUN sed -i 's|account-service.uri.notification=https://saglikdosyam-account.up.railway.app/api/notifications/save|account-service.uri.notification=http://accountservice:50503/api/notifications/save|g' ./src/main/resources/application-devrail.properties
 
 
-RUN sed -i 's|https://www.ealerji.com/|http://op.kayacode.tech/main/|g' ./src/main/java/org/myhealthfile/app/utils/EmailUtil.java
+RUN sed -i 's|https://www.ealerji.com/verification/|http://op.kayacode.tech/main/api/auth/verify/email?verificationId=|g' ./src/main/java/org/myhealthfile/app/utils/EmailUtil.java
 
 
 

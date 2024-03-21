@@ -19,7 +19,7 @@ services:
       args:
         - GIT_TOKEN=${GIT_TOKEN}
     ports:
-      - "50500:50500"gi
+      - "50500:50500"
     environment:
       - ACCOUNT_SERVICE_API_URL=http://accountservice:50503
     restart: on-failure
