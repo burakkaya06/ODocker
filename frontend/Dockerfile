@@ -25,6 +25,8 @@ RUN sed -i 's|NEXT_PUBLIC_SIGNUP_API_URL=https://saglikdosyam.up.railway.app/api
 
 RUN sed -i 's|NEXT_PUBLIC_LOGIN_API_URL="https://ealerji.com/api/auth/login"|NEXT_PUBLIC_LOGIN_API_URL="http://op.kayacode.tech/main/api/auth/login"|' .env
 
+RUN sed -i 's|https://ealerji.com/api/auth/login|http://op.kayacode.tech/main/api/auth/login|' ./service/authApi.js
+
 
 RUN npm run build
 
