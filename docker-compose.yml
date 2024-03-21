@@ -5,7 +5,7 @@ services:
   reactapp:
     build:
       context: ..
-      dockerfile: Docker/frontend/Dockerfile
+      dockerfile: ODocker/frontend/Dockerfile
       args:
         - GIT_TOKEN=${GIT_TOKEN}
     ports:
@@ -15,7 +15,7 @@ services:
   main:
     build:
       context: ..
-      dockerfile: Docker/main/Dockerfile
+      dockerfile: ODocker/main/Dockerfile
       args:
         - GIT_TOKEN=${GIT_TOKEN}
     ports:
@@ -27,7 +27,7 @@ services:
   accountservice:
     build:
       context: ..
-      dockerfile: Docker/accountservice/Dockerfile
+      dockerfile: ODocker/accountservice/Dockerfile
       args:
         - GIT_TOKEN=${GIT_TOKEN}
     ports:
@@ -39,7 +39,7 @@ services:
   questionservice:
     build:
       context: ..
-      dockerfile: Docker/questionsservice/Dockerfile
+      dockerfile: ODocker/questionsservice/Dockerfile
       args:
         - GIT_TOKEN=${GIT_TOKEN}
     ports:
@@ -49,7 +49,7 @@ services:
   nginx:
     build:
       context: ..
-      dockerfile: Docker/znginx/Dockerfile
+      dockerfile: ODocker/znginx/Dockerfile
     ports:
       - "80:80"
     restart: on-failure
@@ -57,7 +57,7 @@ services:
   jenkins:
     build:
       context: ..
-      dockerfile:  Docker/zjenkins/Dockerfile
+      dockerfile:  ODocker/zjenkins/Dockerfile
     ports:
       - "4123:8080"
       - "50000:50000"
