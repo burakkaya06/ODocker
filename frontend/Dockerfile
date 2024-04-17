@@ -13,6 +13,8 @@ RUN npm install
 
 # Projenin her yerinde URL'leri güncelleme
 RUN find . -type f -exec sed -i 's|https://ealerji.com/api/|http://op.kayacode.tech/main/api/|g' {} +
+RUN find . -type f -exec sed -i 's|NEXT_PUBLIC_LOCAL_URL="https://www.ealerji.com/dash/main|NEXT_PUBLIC_LOCAL_URL="http://op.kayacode.tech/main/dash/main"/|g' {} +
+
 RUN find . -type f -exec sed -i 's|https://ealerji.com|http://op.kayacode.tech|g' {} +
 RUN find . -type f -exec sed -i 's|https://saglikdosyam.up.railway.app/api|http://op.kayacode.tech/main/api|g' {} +
 
